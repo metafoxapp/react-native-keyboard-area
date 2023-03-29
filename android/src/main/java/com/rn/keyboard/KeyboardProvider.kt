@@ -49,6 +49,9 @@ class KeyboardProvider(private val activity: Activity) : PopupWindow(activity) {
             resizableView.viewTreeObserver.addOnGlobalLayoutListener(getGlobalLayoutListener())
             if (!isShowing && parentView?.windowToken != null) {
                 showAtLocation(parentView, Gravity.NO_GRAVITY, 0, 0)
+            } else {
+                val orientation = activity.resources.configuration.orientation
+                notifyKeyboardHeightChanged( 0, orientation)
             }
         }
     }
